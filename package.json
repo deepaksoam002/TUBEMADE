@@ -1,0 +1,32 @@
+{
+  "name": "tubemet",
+  "version": "1.0.0",
+  "description": "A web app that serve videos like youtube",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "express",
+    "node.js",
+    "mongoose",
+    "backend"
+  ],
+  "author": "Deepak Kumar Soam",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.13.0",
+    "mongoose-aggregate-paginate-v2": "^1.1.4"
+  }
+}
