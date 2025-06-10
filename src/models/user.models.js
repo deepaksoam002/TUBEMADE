@@ -14,7 +14,8 @@ updatedAt Date
 */
 
 import mongoose, { Schema } from "mongoose";
-
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 // create database schema
 const userSchema = new Schema(
   {
@@ -78,5 +79,17 @@ userSchema.pre("save", async function (next) {
 // it return a boolean value (true or false)
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
+};
+
+// RefreshToken jeson web token
+userSchema.methods.generateRefreshToken = function () {
+  //short lived access token
+  return jwt.sign(
+    {
+      _id: this._id,
+    },
+    process.env.REFRESH_TOKEN_SECRET,
+    { expiresIn: process.env.REFRESH_TOKEN_EXREFRESH }
+  );
 };
 export const User = mongoose.model("User", userSchema);
