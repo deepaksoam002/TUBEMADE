@@ -70,7 +70,7 @@ const userSchema = new Schema(
 // it use pre middleware function that work before save the password in database
 //if current middleware not respond then next() use for pass it to next middleware
 userSchema.pre("save", async function (next) {
-  if (!this.modified("password")) return next();
+  if (!this.isModified("password")) return next();
   this.password = bcrypt.hash("password", 10);
   next();
 });
